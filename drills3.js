@@ -25,25 +25,65 @@ for (let key in obj) {
   console.log(`${key}: ${obj[key]}`);
 }
 
+//drill 3
 let hobbit = {
-  meals: ['breakfast', 'second breakfast', 'elevenses', 'lunch', 'afternoon tea', 'dinner', 'supper'],
-}
+  meals: [
+    'breakfast',
+    'second breakfast',
+    'elevenses',
+    'lunch',
+    'afternoon tea',
+    'dinner',
+    'supper'
+  ]
+};
 
 console.log(hobbit.meals[3]);
 
+//drill 4
 let persons = [
   {
     name: 'john',
-    jobTitle: 'Teacher',
+    jobTitle: 'Teacher'
+  },
+  {
+    name: 'james',
+    jobTitle: 'engineer'
+  },
+  {
+    name: 'kay',
+    jobTitle: 'builder'
+  }
+];
+
+persons.forEach(person =>
+  console.log(`Job title: ${person.jobTitle}, Name: ${person.name}`)
+);
+
+//drill 5
+
+persons = [
+  {
+    name: 'john',
+    jobTitle: 'Founder'
   },
   {
     name: 'james',
     jobTitle: 'engineer',
+    boss: 'Fred'
   },
   {
     name: 'kay',
     jobTitle: 'builder',
+    boss: 'Fred'
   }
 ];
 
-persons.forEach(person => console.log(`Job title: ${person.jobTitle}, Name: ${person.name}`));
+persons.forEach(person => {
+  let report = `${person.jobTitle} ${person.name}`;
+  'boss' in person
+    ? (report = ` ${report} reports to ${person.boss}`)
+    : (report = ` ${report} doesn't report to anybody.`);
+
+  console.log(report);
+});
