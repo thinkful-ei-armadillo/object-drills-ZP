@@ -87,3 +87,22 @@ persons.forEach(person => {
 
   console.log(report);
 });
+
+// Drill 6
+let CODE = {
+  'a': 1,
+  'b': 2,
+  'c': 3,
+  'd': 4   
+}
+
+function decodeWords(str){
+  return str.split(' ').map(x => decode(x)).join('');
+}
+
+function decode(word){
+  if(word[0] in CODE) return word[CODE[word[0]]];
+  else return ' ';
+}
+
+console.log(decodeWords('craft block argon meter bells brown croon droop'));
