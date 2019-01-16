@@ -90,19 +90,72 @@ persons.forEach(person => {
 
 // Drill 6
 let CODE = {
-  'a': 1,
-  'b': 2,
-  'c': 3,
-  'd': 4   
+  a: 1,
+  b: 2,
+  c: 3,
+  d: 4
+};
+
+function decodeWords(str) {
+  return str
+    .split(' ')
+    .map(x => decode(x))
+    .join('');
 }
 
-function decodeWords(str){
-  return str.split(' ').map(x => decode(x)).join('');
-}
-
-function decode(word){
-  if(word[0] in CODE) return word[CODE[word[0]]];
+function decode(word) {
+  if (word[0] in CODE) return word[CODE[word[0]]];
   else return ' ';
 }
 
 console.log(decodeWords('craft block argon meter bells brown croon droop'));
+
+//drill 7
+function createCharacter([name, nickname, race, origin, attack, defense]) {
+  return {
+    name,
+    nickname,
+    race,
+    origin,
+    attack,
+    defense,
+    describe: function() {
+      console.log(`${this.name} is a ${this.race} from ${this.origin}`);
+    },
+    evaluateFight: function(character) {
+      let dmgTo = calculateDamage(character.defense, this.attack);
+      let dmgFrom = calculateDamage(this.defense, character.attack);
+      return `"Your opponent takes ${dmgTo} damage and you receive ${dmgFrom} damage"`;
+    }
+  };
+}
+
+function calculateDamage(defense, attack) {
+  return defense > attack ? 0 : attack - defense;
+}
+
+let arrayCharacters = [
+  ['Gandalf the White', 'gandalf', 'Wizard', 'Middle-Earth', 10, 6],
+  ['Bilbo Baggins', 'bilbo', 'Hobbit', 'The Shire', 2, 1],
+  ['Frodo Baggins', 'frodo', 'Hobbit', 'The Shrine', 3, 2],
+  ['Aragon son of Arathon', 'aragon', 'Man', 'Dunnedain', 6, 8],
+  ['Legolas', 'legolas', 'Elf', 'Woodland Realm', 8, 5],
+  ['Arwen Undomiel', 'arwen', 'Half-Elf', 'Rivendell', 9, 6]
+];
+
+const characters = [
+  createCharacter(arrayCharacters[0]),
+  createCharacter(arrayCharacters[1]),
+  createCharacter(arrayCharacters[2]),
+  createCharacter(arrayCharacters[3]),
+  createCharacter(arrayCharacters[4]),
+  createCharacter(arrayCharacters[5])
+];
+
+characters.find(element => element.nickname === 'aragon').describe();
+
+let hobbitChars = characters.filter(element => element.race === 'Hobbit');
+
+let highAttackChars = characters.filter(element => element.attack > 5);
+
+console.log(characters[0].evaluateFight(characters[1]));
