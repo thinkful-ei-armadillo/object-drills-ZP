@@ -166,7 +166,7 @@ const sampleObj = {
   foo: 'foo',
   bar: 'bar',
   bizz: 'bizz',
-  bang: 'bang',
+  bang: 'bang'
 };
 
 function keyDeleter(obj) {
@@ -188,7 +188,7 @@ function keyDeleter(obj) {
     foo: 'foo',
     bar: 'bar',
     bizz: 'bizz',
-    bang: 'bang',
+    bang: 'bang'
   });
 
   if (typeof obj !== 'object') {
@@ -209,4 +209,3 @@ function keyDeleter(obj) {
   });
   console.log('SUCCESS: `keyDeleter` works correctly!');
 })();
-
