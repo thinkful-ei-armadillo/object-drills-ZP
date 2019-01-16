@@ -24,3 +24,26 @@ let obj = {
 for (let key in obj) {
   console.log(`${key}: ${obj[key]}`);
 }
+
+let hobbit = {
+  meals: ['breakfast', 'second breakfast', 'elevenses', 'lunch', 'afternoon tea', 'dinner', 'supper'],
+}
+
+console.log(hobbit.meals[3]);
+
+let persons = [
+  {
+    name: 'john',
+    jobTitle: 'Teacher',
+  },
+  {
+    name: 'james',
+    jobTitle: 'engineer',
+  },
+  {
+    name: 'kay',
+    jobTitle: 'builder',
+  }
+];
+
+persons.forEach(person => console.log(`Job title: ${person.jobTitle}, Name: ${person.name}`));
