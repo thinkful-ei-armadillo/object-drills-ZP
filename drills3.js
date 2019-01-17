@@ -172,8 +172,6 @@ const HEROES = [
   { id: 7, name: 'Hulk', squad: 'Avengers' },
 ];
 
-
-
 function findOne(arr, query){
   let toReturn = null;
   arr.forEach(hero => {
@@ -196,3 +194,38 @@ console.log(findOne(HEROES, {id: 1}));
 console.log(findOne(HEROES, {id: 10}));
 console.log(findOne(HEROES, {id: 5, squad: 'Justice League'}));
 console.log(findOne(HEROES, {id: 2, name: 'Aquaman'}));
+
+// Drill 8a
+
+const Database = {
+  store: {
+    heroes: [
+      { id: 1, name: 'Captain America', squad: 'Avengers' },
+      { id: 2, name: 'Iron Man', squad: 'Avengers' },
+      { id: 3, name: 'Spiderman', squad: 'Avengers' },
+      { id: 4, name: 'Superman', squad: 'Justice League' },
+      { id: 5, name: 'Wonder Woman', squad: 'Justice League' },
+      { id: 6, name: 'Aquaman', squad: 'Justice League' },
+      { id: 7, name: 'Hulk', squad: 'Avengers' },
+    ]
+  },
+  findOne: function(query){
+    let toReturn = null;
+    this.store.heroes.forEach(hero => {
+      let match = true;
+      for (const key in query){
+        if (hero.hasOwnProperty(key)){
+          if (hero[key] !== query[key]){
+            match = false;
+          }
+        } else {
+          match = false;
+        }
+      }
+      match === true? toReturn = hero : '';
+    });
+    return toReturn;
+  }
+};
+
+console.log(JSON.stringify(Database.findOne({ id: 4 }), null, 2));
